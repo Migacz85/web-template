@@ -1,0 +1,34 @@
+{
+  "name": "web-template",
+  "version": "0.0.1",
+  "description": "Template of web-project",
+  "main": "index.html",
+  "scripts": {
+    "test": "serve"
+  },
+  "keywords": [
+    "template",
+    "website",
+    "automated",
+    "workflow"
+  ],
+  "author": "Marcin Mrugacz",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "imagemin-mozjpeg": "^7.0.0",
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.4.9"
+  }
+}
