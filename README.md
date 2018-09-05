@@ -11,28 +11,28 @@ guideline to create your own project with proper README.md
 Automatisation of the workflow is done by gulp.
 In the root folder all files are a source files, and the build folder contains:
 
-- css files built from scss files are automatically:
+css files built from scss files are automatically:
  - concatenated
  - autoprefixed
  - minified
  - sourcemaped
  - moved to /build/css
 
-- js files built from files are automatically::
+js files built from files are automatically::
  - concatenated
  - autoprefixed
  - minified
  - sourcemaped
  - moved to /build/js
 
-- img are automatically:
+img are automatically:
  - files in /img are automatically compressed and moved to build/img
 
-- Project is automatically:
+Project is automatically:
  - reloading browser using browser-sync
  - thanks to browser-sync you can see the site on your laptop and mobile at the
  same time when developing the app
- -
+
 
 ### Features left to implement
 
@@ -43,22 +43,22 @@ Key features to implement to this template:
  - lintering
  - bootstrap
 
-### Existing Feature
+### Existing Tasks 
 
-You can run current tasks:
+To run tasks type gulp and task name. For example: gulp photo
+Current tasks for this project: 
 
- ├── photo
- ├── delete-photos
- ├── styles
- ├── script
- ├─┬ default
- │ └─┬ <series>
- │   ├── script
- │   ├── styles
- │   ├── delete-photos
- │   └── photo
- ├── reload
- └── server
+ - photo  
+ - delete-photos
+ - styles
+ - script
+ - default:
+     - script
+     - styles
+     - delete-photos
+     - photo
+ - reload
+ - server
 
 ##  How to start ?
 
@@ -71,7 +71,15 @@ Local version 4.0.0
 In order to start you need to have a installed node package manager
 
 ```
-npm install init
+npm install 
 sudo npm install gulp -g
 sudo npm i -g gulp-cli
 ```
+
+After that start server: 
+
+```
+gulp server
+```
+Your project will run, and do automaticaly things for you. 
+Enjoy :-)

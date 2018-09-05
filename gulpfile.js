@@ -15,15 +15,27 @@ const imagemin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const clean = require('gulp-clean');
 
-//Paths 
+// SETTINGS 
+// Build paths
+var BUILD_PATH = 'build'
+var BUILT_MIN_CSS_PATH = 'build/min-css';  //Automated task: Convert scss in to minified css here
+var BUILD_IMG_PATH = 'build/img'; //Automated task: Compress new photos from IMG_PATH 
+var BUILD_JS_PATH ='build/js'; //Automated task: Join all js files  
 
-var SCRIPT_PATH = 'js/**/*.js';
-var DIST_PATH = 'build/css';
-var CSS_PATH = 'css/**/*.css';
-var SCSS_PATH = 'scss/**/*.scss'
+// Source paths
+var CSS_PATH = 'build/css'        //Automated task: put here a copy of css files. For reading only purpose.
+var SCRIPTS_PATH = 'js/*.js';
+var SCSS_PATH = 'scss/**/*.scss';
+var IMG_PATH = 'img/**/*';
+
+// Order how js will be concated
+var JS_ORDER = [ 'js/zfirst.js', SCRIPTS_PATH ]
+
+// Picture quality 0 (worst) to 100 (perfect).
+var QUALITY = 40   
 
 // Pure Css Styles Automation - function in this project is unused. 
-// but if you want use in your project pure css you can use that one
+// but if you want use in your project pure css you can use that one instead of scss
 gulp.task('css-styles', function () {    
     console.log('starting styles task');
     return gulp.src(CSS_PATH)
@@ -39,27 +51,33 @@ gulp.task('css-styles', function () {
     .pipe(concat('styles.css'))
     .pipe(minifyCss())
     .pipe(sourcemaps.write()) //how files was look after?
-    .pipe(gulp.dest(DIST_PATH))
+    .pipe(gulp.dest(CSS_DIST_PATH))
 });
 
 // Photos
 gulp.task('photo', function () {
-    return gulp.src(['img/**/*'])
+    return gulp.src([IMG_PATH])
         .pipe(imagemin([
             imageminMozjpeg({
-                quality: 50 //0 (worst) to 100 (perfect).
+                quality: QUALITY
             })
         ]))
-        .pipe(gulp.dest('build/img'));
+        .pipe(gulp.dest(BUILD_IMG_PATH));
 });
 
 gulp.task('delete-photos', function () {
-    return gulp.src('build/img', {
+    return gulp.src(BUILD_IMG_PATH, {
             read: false
         })
         .pipe(clean());
 });
 
+gulp.task('delete-build', function () {
+    return gulp.src(BUILD_PATH, {
+            read: false
+        })
+        .pipe(clean());
+});
 // SCSS automation
 gulp.task('styles', function () {
     console.log('starting SCSS styles task');
@@ -73,18 +91,18 @@ gulp.task('styles', function () {
         .pipe(autoprefixer())
         // you can pass object into autoprefixer:
         // for example { browser: ['last 2 versions', 'ie 8']
-        .pipe(sass({
-            outputStyle: 'compressed'
-        }))
+        .pipe(sass(
+            //{outputStyle: 'compressed'}
+        ))
+        .pipe(gulp.dest(CSS_PATH)) 
+        .pipe(minifyCss())
         .pipe(sourcemaps.write()) //how files was look like after?
-        .pipe(gulp.dest(DIST_PATH))
+        .pipe(gulp.dest(BUILT_MIN_CSS_PATH))
 });
-
-
 // JS automation
 gulp.task('script', function () {
     
-    return  gulp.src(SCRIPT_PATH)
+    return  gulp.src(JS_ORDER)
             .pipe(plumber(function(err) {
             console.log('Java script errors:')
             console.log(err)
@@ -94,12 +112,10 @@ gulp.task('script', function () {
             .pipe(minify())
             .pipe(concat('scripts.js'))
             .pipe(sourcemaps.write())
-            .pipe(gulp.dest('build/js'));
-            
+            .pipe(gulp.dest(BUILD_JS_PATH));         
 });
-
 //Build whole project from the begining to build/ without running the server
-gulp.task('default',  gulp.series('script', 'styles', 'delete-photos', 'photo'), function () {
+gulp.task('default',  gulp.series('delete-build' ,'script', 'styles', 'photo'), function () {
     console.log('Building your project...');
     gulp.series('script')
     gulp.series('styles')
@@ -108,7 +124,6 @@ gulp.task('default',  gulp.series('script', 'styles', 'delete-photos', 'photo'),
 });
 
 // Reload the webpage
-
 gulp.task('reload', function () {
     console.log('Reloading page')
     browserSync.reload()
@@ -116,7 +131,8 @@ gulp.task('reload', function () {
 
 // Static server
 gulp.task('server', function () {
-
+    
+    gulp.series('delete-build' ,'script', 'styles', 'photo')
     browserSync.init({
         server: {
             baseDir: "./"
