@@ -1,0 +1,33 @@
+@import "./reset/reset";
+
+$main-col: hsl(240, 4%, 9%);
+$pad:10px;
+$blue:rgb(182, 182, 243);
+
+body {
+    li {color:$blue;
+    margin-left:40px;
+    }
+ a{
+    color:rgb(35, 163, 185);
+ } 
+ h1{
+     color:rgb(170, 152, 152);
+     padding:$pad;
+ }
+ h2 {
+     color:rgb(94, 98, 141);
+     padding:$pad;
+ }
+ p {
+    padding:$pad;
+    color:rgb(92, 83, 83);
+ }
+    margin:20px;
+    background-color: $main-col;
+    display: grid;
+    transition: all .5s;
+    user-select: none;
+  // background: linear-gradient(to bottom, white, black);
+}
+

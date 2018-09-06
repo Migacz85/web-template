@@ -1,7 +1,7 @@
 const gulp = require('gulp');
+const babel = require('gulp-babel');
 const uglifyjs = require('uglify-es');
 const composer = require('gulp-uglify/composer');
-const pump = require('pump');
 const minify = composer(uglifyjs, console);
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
@@ -9,35 +9,38 @@ const reload = browserSync.reload;
 const minifyCss = require('gulp-minify-css');
 const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
-const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const imagemin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const clean = require('gulp-clean');
+const sourcemaps = require('gulp-sourcemaps');
+const jasmine = require('gulp-jasmine');
+const reporters = require('jasmine-reporters');
 
 // SETTINGS 
 // Build paths
-var BUILD_PATH = 'build'
-var BUILT_MIN_CSS_PATH = 'build/min-css';  //Automated task: Convert scss in to minified css here
-var BUILD_IMG_PATH = 'build/img'; //Automated task: Compress new photos from IMG_PATH 
-var BUILD_JS_PATH ='build/js'; //Automated task: Join all js files  
+const BUILD_PATH = 'build';
+const BUILT_MIN_CSS_PATH = 'build/min-css/';  //Automated task: Convert scss in to minified css here
+const BUILD_IMG_PATH = 'build/img/'; //Automated task: Compress new photos from IMG_PATH 
+const BUILD_JS_PATH ='build/js/'; //Automated task: Join all js files  
 
 // Source paths
-var CSS_PATH = 'build/css'        //Automated task: put here a copy of css files. For reading only purpose.
-var SCRIPTS_PATH = 'js/*.js';
-var SCSS_PATH = 'scss/**/*.scss';
-var IMG_PATH = 'img/**/*';
+const SOURCE_PATH='source/*html'
+const CSS_PATH = 'build/css';        //Automated task: put here a copy of css files. For reading only purpose.
+const SCRIPTS_PATH = 'source/js/**/*.js';
+const SCSS_PATH = 'source/scss/**/*.scss';
+const IMG_PATH = 'source/img/**/*';
+
 
 // Order how js will be concated
-var JS_ORDER = [ 'js/zfirst.js', SCRIPTS_PATH ]
+const JS_ORDER = ['source/js/zfirst.js', SCRIPTS_PATH];
 
 // Picture quality 0 (worst) to 100 (perfect).
-var QUALITY = 40   
+var QUALITY = 40 ;
 
 // Pure Css Styles Automation - function in this project is unused. 
 // but if you want use in your project pure css you can use that one instead of scss
 gulp.task('css-styles', function () {    
-    console.log('starting styles task');
     return gulp.src(CSS_PATH)
     .pipe(plumber(function(err) {
         console.log("Error: ");
@@ -66,11 +69,13 @@ gulp.task('photo', function () {
 });
 
 gulp.task('delete-photos', function () {
-    return gulp.src(BUILD_IMG_PATH, {
+    return gulp.src('BUILD_IMG_PATH', {
             read: false
         })
-        .pipe(clean());
+        .pipe(clean( {allowEmpty: true}))
+        
 });
+
 
 gulp.task('delete-build', function () {
     return gulp.src(BUILD_PATH, {
@@ -78,6 +83,20 @@ gulp.task('delete-build', function () {
         })
         .pipe(clean());
 });
+
+gulp.task('copy', function() {
+    return gulp
+    .src(SOURCE_PATH)
+    .pipe(gulp.dest(BUILD_PATH));
+});
+// Jasmine
+
+gulp.task('jasmine', () =>
+    gulp.src(BUILD_JS_PATH+'scripts.js')
+        .pipe(jasmine({
+            reporter: new reporters.JUnitXmlReporter()
+        }))
+);
 // SCSS automation
 gulp.task('styles', function () {
     console.log('starting SCSS styles task');
@@ -109,18 +128,13 @@ gulp.task('script', function () {
             this.emit('end');
             }))
             .pipe(sourcemaps.init())
+            .pipe(babel({
+                presets:['env']
+            }))
             .pipe(minify())
             .pipe(concat('scripts.js'))
             .pipe(sourcemaps.write())
             .pipe(gulp.dest(BUILD_JS_PATH));         
-});
-//Build whole project from the begining to build/ without running the server
-gulp.task('default',  gulp.series('delete-build' ,'script', 'styles', 'photo'), function () {
-    console.log('Building your project...');
-    gulp.series('script')
-    gulp.series('styles')
-    gulp.series('delete-photos')
-    gulp.series('photo')
 });
 
 // Reload the webpage
@@ -128,22 +142,31 @@ gulp.task('reload', function () {
     console.log('Reloading page')
     browserSync.reload()
 });
-
 // Static server
 gulp.task('server', function () {
     
-    gulp.series('delete-build' ,'script', 'styles', 'photo')
     browserSync.init({
         server: {
-            baseDir: "./"
+            baseDir: "./build"
         }
     });
 
     gulp.watch("js/**/*js", gulp.series('script'));
     gulp.watch(SCSS_PATH, gulp.series('styles'));
-    gulp.watch("img/**/*", gulp.series('delete-photos'));
+    gulp.watch("build/**/*", gulp.series('delete-photos'));
     gulp.watch("img/**/*", gulp.series('photo'));
     gulp.watch("build/**/*.css").on("change", reload)
-    gulp.watch("*.html").on("change", reload)
+    gulp.watch("source/*.html").on("copy", reload)
+    gulp.watch("build/*.html").on("change", reload)
     gulp.watch("build/js/**/*").on("change", reload)
 });
+
+//Build whole project and run the server
+    gulp.task('default',  gulp.series('copy', 'script', 'styles', 'photo', 'server'), function () {
+    console.log('Building your project...');
+    gulp.series('script')
+    gulp.series('styles')
+    gulp.series('delete-photos')
+    gulp.series('photo')
+});
+

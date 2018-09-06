@@ -19,6 +19,7 @@ css files built from scss files are automatically:
  - moved to /build/css
 
 js files built from files are automatically::
+ - compiled with babel 
  - concatenated
  - autoprefixed
  - minified
@@ -33,12 +34,10 @@ Project is automatically:
  - thanks to browser-sync you can see the site on your laptop and mobile at the
  same time when developing the app
 
-
 ### Features left to implement
 
 Key features to implement to this template:
 
- - babel
  - jasmine
  - lintering
  - bootstrap
@@ -60,6 +59,23 @@ Current tasks for this project:
  - reload
  - server
 
+## Technologies used:
+
+
+- gulp 
+
+https://gulpjs.com/
+
+
+- sass
+
+http://sass-lang.com/documentation/file.SASS_REFERENCE.html
+
+- babel (in this project es6 )
+
+https://github.com/babel/gulp-babel
+https://babeljs.io/
+
 ##  How to start ?
 
 In this particular project i had installed
@@ -70,16 +86,19 @@ Local version 4.0.0
 
 In order to start you need to have a installed node package manager
 
+In folder you want to start a project type:
 ```
+git clone https://github.com/Migacz85/web-template.git
 npm install 
 sudo npm install gulp -g
 sudo npm i -g gulp-cli
 ```
 
-After that start server: 
+After that run the command: 
 
 ```
 gulp server
 ```
-Your project will run, and do automaticaly things for you. 
+It will make 2 things - build your project to folder "build" and
+your project will run, and do automaticaly things for you. 
 Enjoy :-)
