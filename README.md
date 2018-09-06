@@ -8,31 +8,46 @@ guideline to create your own project with proper README.md
 
 ## Features
 
-Automatisation of the workflow is done by gulp.
-In the root folder all files are a source files, and the build folder contains:
+In the source folder you will find source files and mainly here developing will happen. 
+In the build folder while you develop will be generated ready to use site.
+After finishing your project you can take this folder and deploy it.
 
-css files built from scss files are automatically:
+Files in build folder:
+
+Css files built from source/*.scss files are automatically:
  - concatenated
  - autoprefixed
  - minified
  - sourcemaped
- - moved to /build/css
+ - moved to /build/min-css/styles.css
 
-js files built from files are automatically::
- - compiled with babel 
+Js files built from source/js/*.js are automatically::
+ - compiled with babel (es6) 
  - concatenated
  - autoprefixed
  - minified
  - sourcemaped
- - moved to /build/js
+ - moved to one file /build/js/scripts.js
 
-img are automatically:
- - files in /img are automatically compressed and moved to build/img
+Img are automatically:
+ - files in /img are compressed and moved to build/img
+
+All html files from source/ are moved to build/. 
+index.html is linked to generated files from:
+
+/build/min-css/styles.css
+/build/js/scripts.js
 
 Project is automatically:
  - reloading browser using browser-sync
- - thanks to browser-sync you can see the site on your laptop and mobile at the
- same time when developing the app
+ - thanks to browser-sync you can see the site on your laptop and mobile at the same time when developing the app and making changes. To achieve this
+ use external ip that will be shown after running:
+
+ '''
+ gulp
+ '''
+
+ But run read first "How to start".
 
 ### Features left to implement
 
@@ -45,6 +60,7 @@ Key features to implement to this template:
 ### Existing Tasks 
 
 To run tasks type gulp and task name. For example: gulp photo
+
 Current tasks for this project: 
 
  - photo  
@@ -60,7 +76,6 @@ Current tasks for this project:
  - server
 
 ## Technologies used:
-
 
 - gulp 
 

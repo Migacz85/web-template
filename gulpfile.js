@@ -99,7 +99,6 @@ gulp.task('jasmine', () =>
 );
 // SCSS automation
 gulp.task('styles', function () {
-    console.log('starting SCSS styles task');
     return gulp.src(SCSS_PATH)
         .pipe(plumber(function (err) { 
             console.log("Error: ");
@@ -151,22 +150,19 @@ gulp.task('server', function () {
         }
     });
 
-    gulp.watch("js/**/*js", gulp.series('script'));
+    gulp.watch("source/js/**/*js", gulp.series('script'));
     gulp.watch(SCSS_PATH, gulp.series('styles'));
-    gulp.watch("build/**/*", gulp.series('delete-photos'));
-    gulp.watch("img/**/*", gulp.series('photo'));
+    gulp.watch("source/img/**/*", gulp.series('delete-photos'));
+    gulp.watch("source/img/**/*", gulp.series('photo'));
     gulp.watch("build/**/*.css").on("change", reload)
-    gulp.watch("source/*.html").on("copy", reload)
+    gulp.watch("source/*.html", gulp.series('copy'));
     gulp.watch("build/*.html").on("change", reload)
     gulp.watch("build/js/**/*").on("change", reload)
 });
 
 //Build whole project and run the server
-    gulp.task('default',  gulp.series('copy', 'script', 'styles', 'photo', 'server'), function () {
-    console.log('Building your project...');
-    gulp.series('script')
-    gulp.series('styles')
-    gulp.series('delete-photos')
-    gulp.series('photo')
+gulp.task('default',  gulp.series('copy', 'script', 'styles', 'photo', 'server'), function () {
+   
+    
 });
 
