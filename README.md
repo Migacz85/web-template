@@ -53,9 +53,9 @@ Project is automatically:
 
 Key features to implement to this template:
 
- - jasmine
- - lintering
- - bootstrap
+ - auto refresh for jasmine (if you can implement this please help !)
+ - better implementation of jasmine
+ - configure eslint with airbnb  
 
 ### Existing Tasks 
 
@@ -86,7 +86,7 @@ https://gulpjs.com/
 
 http://sass-lang.com/documentation/file.SASS_REFERENCE.html
 
-- babel (in this project es6 )
+- babel (in this project es7 )
 
 https://github.com/babel/gulp-babel
 https://babeljs.io/
@@ -117,3 +117,24 @@ gulp server
 It will make 2 things - build your project to folder "build" and
 your project will run, and do automaticaly things for you. 
 Enjoy :-)
+
+## Known bugs
+
+- Jasmine server sometimes stops, 
+- Uou need to change manually PORT number every time jasmine stops to re run,
+- If there are no photos - task photos will crash.
+- Eslint is throwing errors on _spec.js - spec file for jasmine even after including    "jasmine": true in .eslintrc.json 
+
+# Npm bugs
+
+npm audit gives message:
+-found 9 vulnerabilities (1 low, 8 moderate) in 20922 scanned packages
+  9 vulnerabilities require manual review. See the full report for details.
+
+dependencies causing this problems:
+
+moderate:
+- gulp-imagemin
+- gulp-imagemin-mozjpeg
+low:
+- browser-sync

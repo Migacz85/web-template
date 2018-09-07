@@ -1,2 +1,1 @@
-console.log('With working sourcemaps')
-
+console.log('With working sourcemaps');

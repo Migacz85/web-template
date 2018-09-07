@@ -1,0 +1,28 @@
+* {
+  margin: 0px;
+  padding: 0; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+  background-color: #2d2d39;
+  display: grid;
+  transition: all .5s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  body li {
+    color: #b6b6f3;
+    margin-left: 40px; }
+  body a {
+    color: #23a3b9; }
+  body h1 {
+    color: #a1c3da;
+    padding: 10px; }
+  body h2 {
+    color: #9298dd;
+    padding: 10px; }
+  body p {
+    padding: 10px;
+    color: #899d9e; }
