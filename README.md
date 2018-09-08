@@ -47,15 +47,13 @@ Project is automatically:
  gulp
  '''
 
- But run read first "How to start".
+ But read first "How to start".
 
 ### Features left to implement
 
 Key features to implement to this template:
 
- - auto refresh for jasmine (if you can implement this please help !)
- - better implementation of jasmine
- - configure eslint with airbnb  
+ - nunjucks 
 
 ### Existing Tasks 
 
@@ -63,17 +61,24 @@ To run tasks type gulp and task name. For example: gulp photo
 
 Current tasks for this project: 
 
- - photo  
- - delete-photos
- - styles
- - script
- - default:
-     - script
-     - styles
-     - delete-photos
-     - photo
- - reload
- - server
+- ├── jasmine-live
+- ├── jasmine
+- ├── jasmine-chrome (don't work)
+- ├── photo
+- ├── delete-photos
+- ├── delete-build
+- ├── copy
+- ├── styles
+- ├── script
+- ├── reload
+- ├── server
+- └─┬ default
+-   └─┬ <series>
+-     ├── copy
+-     ├── script
+-     ├── styles
+-     ├── photo
+-     └── server
 
 ## Technologies used:
 
@@ -91,9 +96,14 @@ http://sass-lang.com/documentation/file.SASS_REFERENCE.html
 https://github.com/babel/gulp-babel
 https://babeljs.io/
 
+- eslint 
+
+Implemented with airbnb 
+https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
+
 ##  How to start ?
 
-In this particular project i had installed
+In this particular project I had installed
 
 gulp version:
 CLI version 2.0.1
@@ -116,27 +126,37 @@ gulp server
 ```
 It will make 2 things - build your project to folder "build" and
 your project will run, and do automatically things for you. 
-Enjoy :-)
+
+For testing in jasmine run:
+
+```
+gulp jasmine-live
+```
 
 ## Known bugs
 
-- Jasmine server sometimes stops, 
-- Uou need to change manually PORT number every time jasmine stops to re run,
+- Jasmine server sometimes stops - fixed
+- You need to change manually PORT number every time jasmine stops to re run,
 - If there are no photos - task photos will crash.
-- Eslint is throwing errors on _spec.js - spec file for jasmine even after including    "jasmine": true in .eslintrc.json 
+- Eslint is throwing errors on _spec.js - spec file for jasmine even after including    "jasmine": true in .eslintrc.json  
 
 # Npm bugs
 
 npm audit gives message:
--found 9 vulnerabilities (1 low, 8 moderate) in 20922 scanned packages
-  9 vulnerabilities require manual review. See the full report for details.
+found 13 vulnerabilities (3 low, 8 moderate, 2 critical) in 21824 scanned packages
+  13 vulnerabilities require manual review. See the full report for details.
 
 dependencies causing this problems:
 
 moderate:
+
 - gulp-imagemin
 - gulp-imagemin-mozjpeg
+
 low:
+
 - browser-sync
+
 critical:
+
 - jasmine-live-reloading

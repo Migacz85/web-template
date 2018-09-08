@@ -1,16 +1,9 @@
 /* eslint-env node */
-
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 const uglifyjs = require('uglify-es');
 const composer = require('gulp-uglify/composer');
-
-const minify = composer(uglifyjs, console);
-const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
-
-const reload = browserSync.reload;
-const minifyCss = require('gulp-minify-css');
 const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
@@ -19,10 +12,15 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const clean = require('gulp-clean');
 const sourcemaps = require('gulp-sourcemaps');
 const jasmineBrowser = require('gulp-jasmine-browser');
-// const reporters = require('jasmine-reporters');
 const watch = require('gulp-watch');
-// const run = require('gulp-run-command').default;
 const jasmine = require('gulp-jasmine-livereload-task');
+const minifyCss = require('gulp-minify-css');
+const browserSync = require('browser-sync').create();
+// const run = require('gulp-run-command').default;
+
+
+const minify = composer(uglifyjs, console);
+
 // SETTINGS
 // Build paths
 const BUILD_PATH = 'build';
@@ -47,23 +45,6 @@ const JS_ORDER = ['source/js/zfirst.js', SCRIPTS_PATH];
 
 // Picture quality 0 (worst) to 100 (perfect).
 const QUALITY = 40;
-
-// Pure Css Styles Automation - function in this project is unused.
-// but if you want use in your project pure css you can use that one instead of scss
-gulp.task('css-styles', () => gulp.src('your/path/to/css')
-  .pipe(plumber(function (err) {
-    console.log('Error: ');
-    console.log(err);
-    this.emit('end');
-  }))
-  .pipe(sourcemaps.init()) // how files was look before?
-  .pipe(autoprefixer())
-// you can pass object into autoprefixer:
-// for example { browser: ['last 2 versions', 'ie 8']
-  .pipe(concat('styles.css'))
-  .pipe(minifyCss())
-  .pipe(sourcemaps.write()) // how files was look after?
-  .pipe(gulp.dest('your/dest/path')));
 
 // Testing with jasmine
 
@@ -173,19 +154,14 @@ gulp.task('server', () => {
       baseDir: './build',
     },
   });
-
-  // gulp.watch("source/js/**/*js", jasmineBrowser.specRunner());
-  // gulp.watch("source/js/**/*js", jasmineBrowser.server({
-  //     port: PORT
-  // }));
   gulp.watch('source/js/**/*js', gulp.series('script'));
   gulp.watch(SCSS_PATH, gulp.series('styles'));
   gulp.watch('source/img/**/*', gulp.series('delete-photos'));
   gulp.watch('source/img/**/*', gulp.series('photo'));
-  gulp.watch('build/**/*.css').on('change', reload);
+  gulp.watch('build/**/*.css').on('change', browserSync.reload);
   gulp.watch('source/*.html', gulp.series('copy'));
-  gulp.watch('build/*.html').on('change', reload);
-  gulp.watch('build/js/**/*').on('change', reload);
+  gulp.watch('build/*.html').on('change', browserSync.reload);
+  gulp.watch('build/js/**/*').on('change', browserSync.reload);
 });
 
 // Build whole project and run the server
