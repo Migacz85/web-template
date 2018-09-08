@@ -73,7 +73,7 @@ Current tasks for this project:
 - ├── reload
 - ├── server
 - └─┬ default
--   └─┬ <series>
+-   └─┬ series
 -     ├── copy
 -     ├── script
 -     ├── styles
