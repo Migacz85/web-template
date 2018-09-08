@@ -1,6 +1,6 @@
 
-// window.Calculator = {
-//   add: function () {
-//     return 5;
-//   }
-// }
+window.Calculator = {
+  add() {
+    return 1;
+  },
+};

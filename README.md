@@ -18,15 +18,15 @@ Css files built from source/*.scss files are automatically:
  - concatenated
  - autoprefixed
  - minified
- - sourcemaped
+ - sourcemaps
  - moved to /build/min-css/styles.css
 
-Js files built from source/js/*.js are automatically::
- - compiled with babel (es6) 
+Js files built from source/js/*.js are automatically:
+ - compiled with babel (es7) 
  - concatenated
  - autoprefixed
  - minified
- - sourcemaped
+ - sourcemaps
  - moved to one file /build/js/scripts.js
 
 Img are automatically:
@@ -115,7 +115,7 @@ After that run the command:
 gulp server
 ```
 It will make 2 things - build your project to folder "build" and
-your project will run, and do automaticaly things for you. 
+your project will run, and do automatically things for you. 
 Enjoy :-)
 
 ## Known bugs
@@ -138,3 +138,5 @@ moderate:
 - gulp-imagemin-mozjpeg
 low:
 - browser-sync
+critical:
+- jasmine-live-reloading

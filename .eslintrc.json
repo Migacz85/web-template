@@ -1,5 +1,5 @@
 {
-    "extends": "eslint:recommended",
+    
     "parserOptions": {
         "ecmaVersion": 6
     },
@@ -10,6 +10,10 @@
         "jasmine": true
     },
     "rules": {
-        "no-console": "warn"
-    }
+        "no-console": "off"  
+    },
+
+    "extends": [
+         "airbnb"
+      ]
 }
