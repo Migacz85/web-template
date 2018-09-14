@@ -16,8 +16,7 @@ const watch = require('gulp-watch');
 const jasmine = require('gulp-jasmine-livereload-task');
 const minifyCss = require('gulp-minify-css');
 const browserSync = require('browser-sync').create();
-// const run = require('gulp-run-command').default;
-
+const markdown = require('gulp-markdown');
 
 const minify = composer(uglifyjs, console);
 
@@ -47,16 +46,19 @@ const JS_ORDER = ['source/js/zfirst.js', SCRIPTS_PATH];
 const QUALITY = 40;
 
 // Testing with jasmine
-
-// Is working with live-reload but this dependencies is causing 2 critical vulnerabilities from npm
-// https://www.npmjs.com/package/gulp-jasmine-livereload-task
-
 gulp.task('jasmine-live', jasmine({
   files: JASMINE_PATH,
   specRunner: ['./source/spec'],
   staticAssetsPath: ['./source/spec'],
   livereload: PORT,
 }));
+
+// For changing readme.md in to html format
+gulp.task('readme', () =>
+    gulp.src('README.md')
+        .pipe(markdown())
+        .pipe(gulp.dest('build/'))
+);
 
 // Works without auto-reloading the page
 // Official tip from jasmine:
@@ -72,15 +74,6 @@ gulp.task('jasmine', () => {
     }));
 });
 
-// Under development dont use
-gulp.task('jasmine-chrome', () => gulp.src([SCRIPTS_PATH, SPEC_PATH])
-  .pipe(jasmineBrowser.specRunner({
-    console: true,
-  }))
-  .pipe(jasmineBrowser.headless({
-    driver: 'chrome',
-  })));
-
 // Photos
 gulp.task('photo', () => gulp.src([IMG_PATH])
   .pipe(imagemin([
@@ -91,7 +84,7 @@ gulp.task('photo', () => gulp.src([IMG_PATH])
   .pipe(gulp.dest(BUILD_IMG_PATH)));
 
 gulp.task('delete-photos', () => gulp.src('BUILD_IMG_PATH', {
-  read: false,
+  read: false, allowEmpty: true 
 })
   .pipe(clean({
     allowEmpty: true,
@@ -99,9 +92,10 @@ gulp.task('delete-photos', () => gulp.src('BUILD_IMG_PATH', {
 
 
 gulp.task('delete-build', () => gulp.src(BUILD_PATH, {
-  read: false,
+  read: false, allowEmpty: true 
 })
-  .pipe(clean()));
+  .pipe(clean( ))
+);
 
 gulp.task('copy', () => gulp
   .src(SOURCE_PATH)
@@ -125,6 +119,7 @@ gulp.task('styles', () => gulp.src(SCSS_PATH)
   .pipe(minifyCss())
   .pipe(sourcemaps.write()) // how files was look like after?
   .pipe(gulp.dest(BUILT_MIN_CSS_PATH)));
+
 // JS automation
 gulp.task('script', () => gulp.src(JS_ORDER)
   .pipe(plumber(function (err) {
@@ -160,10 +155,11 @@ gulp.task('server', () => {
   gulp.watch('source/img/**/*', gulp.series('photo'));
   gulp.watch('build/**/*.css').on('change', browserSync.reload);
   gulp.watch('source/*.html', gulp.series('copy'));
+  gulp.watch('README.md', gulp.series('readme'));
   gulp.watch('build/*.html').on('change', browserSync.reload);
   gulp.watch('build/js/**/*').on('change', browserSync.reload);
 });
 
-// Build whole project and run the server
-gulp.task('default', gulp.series('copy', 'script', 'styles', 'photo', 'server'), () => {
+// Rebuild whole project and run the server
+gulp.task('default', gulp.series('delete-build' ,'copy', 'script', 'styles', 'photo', 'readme', 'server'), () => {
 });
