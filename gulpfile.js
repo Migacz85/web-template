@@ -54,11 +54,7 @@ gulp.task('jasmine-live', jasmine({
 }));
 
 // For changing readme.md in to html format
-gulp.task('readme', () =>
-    gulp.src('README.md')
-        .pipe(markdown())
-        .pipe(gulp.dest('build/'))
-);
+gulp.task('readme', () => gulp.src('README.md').pipe(markdown()).pipe(gulp.dest('build/')));
 
 // Works without auto-reloading the page
 // Official tip from jasmine:
@@ -84,7 +80,7 @@ gulp.task('photo', () => gulp.src([IMG_PATH])
   .pipe(gulp.dest(BUILD_IMG_PATH)));
 
 gulp.task('delete-photos', () => gulp.src('BUILD_IMG_PATH', {
-  read: false, allowEmpty: true 
+  read: false, allowEmpty: true,
 })
   .pipe(clean({
     allowEmpty: true,
@@ -92,10 +88,9 @@ gulp.task('delete-photos', () => gulp.src('BUILD_IMG_PATH', {
 
 
 gulp.task('delete-build', () => gulp.src(BUILD_PATH, {
-  read: false, allowEmpty: true 
+  read: false, allowEmpty: true,
 })
-  .pipe(clean( ))
-);
+  .pipe(clean()));
 
 gulp.task('copy', () => gulp
   .src(SOURCE_PATH)
@@ -161,5 +156,5 @@ gulp.task('server', () => {
 });
 
 // Rebuild whole project and run the server
-gulp.task('default', gulp.series('delete-build' ,'copy', 'script', 'styles', 'photo', 'readme', 'server'), () => {
+gulp.task('default', gulp.series('delete-build', 'copy', 'script', 'styles', 'photo', 'readme', 'server'), () => {
 });

@@ -2,27 +2,53 @@
   margin: 0px;
   padding: 0; }
 
+.web-title {
+  color: white;
+  font-weight: 100; }
+
 body {
+  padding: 0;
+  margin: 0;
   font-family: 'Roboto', sans-serif;
-  margin: 20px;
-  background-color: #2d2d39;
-  display: grid;
-  transition: all .5s;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+  background-color: white; }
   body li {
-    color: #b6b6f3;
-    margin-left: 40px; }
+    color: #30618a;
+    list-style: none; }
   body a {
-    color: #23a3b9; }
+    color: #19879b; }
+  body .container h1,
+  body .container h2,
+  body .container h3,
+  body .container h4,
+  body .container h5,
+  body .container p {
+    margin-top: 50px;
+    margin-bottom: 50px; }
   body h1 {
-    color: #a1c3da;
-    padding: 10px; }
+    color: black; }
   body h2 {
-    color: #9298dd;
-    padding: 10px; }
+    color: #091118; }
+  body h3 {
+    color: #162c3e; }
+  body h4 {
+    color: #234664; }
   body p {
-    padding: 10px;
-    color: #899d9e; }
+    color: #091118; }
+  body footer {
+    background-color: #234664;
+    padding: 30px; }
+  body footer p {
+    color: white;
+    text-align: center; }
+
+.card {
+  margin-top: 10px;
+  border-color: #30618a;
+  border: dashed; }
+
+.box-shadow {
+  box-shadow: 0 0 5px #234664; }
+
+.bg-custom {
+  background-color: #30618a;
+  color: #162c3e; }

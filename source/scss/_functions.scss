@@ -1,0 +1,10 @@
+// Functions
+@function set-color($bg-color) {
+    @if(lightness($bg-color) > 50) {
+        @return darken($bg-color, 35);
+    }
+
+    @else {
+        @return lighten($bg-color, 50);
+    }
+}

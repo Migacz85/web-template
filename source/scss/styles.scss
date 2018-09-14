@@ -1,40 +1,90 @@
 @import "./reset/reset";
-$main-col: hsl(240, 12%, 20%);
-$pad:10px;
-$blue:rgb(182, 182, 243);
+@import "./functions";
+
+$main-col: rgb(48, 97, 138);
+
+.web-title {
+    color: lighten( set-color($main-col), 15) ;
+    //font-family: 'Noto Serif KR', sans-serif;
+    font-weight: 100;
+}
 
 body {
-
+    padding: 0;
+    margin: 0;
     font-family: 'Roboto', sans-serif;
-
+    background-color:lighten($main-col,65);
     li {
-        color: $blue;
-        margin-left: 40px;
+        color: darken(set-color($main-col), 50);
+        list-style:none;
     }
 
     a {
-        color: rgb(35, 163, 185);
+        color: rgb(25, 135, 155);
+    }
+
+    .container h1,
+    .container h2,
+    .container h3,
+    .container h4,
+    .container h5,
+    .container p {
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 
     h1 {
-        color: rgb(161, 195, 218);
-        padding: $pad;
+        color: darken(set-color($main-col), 90);
+        //text-shadow:0px 0px 10px  invert($main-col, 20);     
     }
 
     h2 {
-        color: rgb(146, 152, 221);
-        padding: $pad;
+        color: darken(set-color($main-col), 80);
+        //text-shadow:0px 0px 10px  invert($main-col, 20);     
+    }
+
+    h3 {
+        color: darken(set-color($main-col), 70);
+        //text-shadow:0px 0px 10px  invert($main-col, 20);     
+    }
+
+    h4 {
+        color: darken(set-color($main-col), 60);
+        //text-shadow:0px 0px 10px  invert($main-col, 20);     
     }
 
     p {
-        padding: $pad;
-        color: rgb(137, 157, 158);
-    }
+        color: darken(set-color($main-col), 80);
 
-    margin:20px;
-    background-color: $main-col;
-    display: grid;
-    transition: all .5s;
-    user-select: none;
-    // background: linear-gradient(to bottom, white, black);
+    }
+ footer {
+     background-color: darken($main-col,10);
+     padding:30px;
+ }
+ footer p {
+     color:lighten(set-color($main-col),30);
+     text-align:center;
+ }
 }
+
+// Bootstrap
+
+.card-body {
+    //  background-color: lighten($color: $main-col, $amount: 20);
+}
+
+.card {
+    margin-top: 10px;
+    border-color: lighten($main-col, 0);
+    border: dashed;
+}
+
+.box-shadow {
+    box-shadow: 0 0 5px darken($main-col,10);
+}
+
+.bg-custom {
+    background-color: darken($main-col, 0);
+    color:darken($main-col, 20);
+}
+

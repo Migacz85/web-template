@@ -31,7 +31,7 @@ Js files built from source/js/*.js are automatically:
 Img are automatically:
  - files in /img are compressed and moved to build/img
 
-All html files from source/ are moved to build/. 
+All html files from source/ are moved to build/
 index.html is linked to generated files from:
 
 /build/min-css/styles.css
@@ -51,7 +51,7 @@ This file is for a gulp package. And is the main script where automation is trig
 
 Autoprefixer (for better css support in browsers)
 https://github.com/sindresorhus/gulp-autoprefixer#readme
-- Babel - (for better javascript support in browsers )
+- Babel - (for better javascript support in browsers)
 https://github.com/babel/gulp-babel#readme
 - Concat (for concat js, css files)
 https://github.com/gulp-community/gulp-concat#readme
@@ -71,7 +71,7 @@ https://github.com/terinjokes/gulp-uglify/
 https://github.com/floatdrop/gulp-watch#readme
 - Markdown (for changing README.md in to html to preview changes)
 
-The task "gulp" is defined in task "default". The task "photo" in task photo. For easy understanding this file I even left a comment for each task. 
+The task 'gulp' is defined in task 'default'. The task 'photo' in task photo. For easy understanding this file I even left a comment for each task. 
 
 ##### Configuration gulpfile.js
 
@@ -138,7 +138,7 @@ Current tasks for this project:
 - jasmine-live (run the jasmine testing)
 - photo (optimize photos in src/img)
 - delete-photos (delete photos in build/img)
-- delete-build  (delete whole build folder)
+- delete-build (delete whole build folder)
 - copy (copy all *html files from source to build)
 - styles (convert sass to css and put it to bulid/css and min file to build/min-css)
 - script (convert all js and put it to bulid/js)
@@ -184,7 +184,7 @@ In order to start you need to have an installed node package manager
 In folder, you want to start a project type:
 ```
 git clone https://github.com/Migacz85/web-template.git
-npm install 
+npm install
 sudo npm install gulp -g
 sudo npm i -g gulp-cli
 ```
@@ -194,7 +194,7 @@ After that run the command:
 ```
 gulp
 ```
-It will make 2 things — build your project to folder "build" and
+It will make 2 things — build your project to folder 'build' and
 your project will run, and do automatically things for you. 
 
 For testing in jasmine run in second terminal:
@@ -206,7 +206,7 @@ gulp jasmine-live
 ## Known bugs
 
 - You need to change manually PORT number every time jasmine stops to re run,
-- Eslint is throwing errors on _spec.js - spec file for jasmine even after including “jasmine": true in .eslintrc.json  
+- Eslint is throwing errors on _spec.js - spec file for jasmine even after including 'jasmine': true in .eslintrc.json  
 
 # Npm bugs
 

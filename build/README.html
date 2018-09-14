@@ -1,0 +1,172 @@
+<h1 id="web-template-project">Web template project</h1>
+<p>The main idea here is to create a simple but powerful template that can
+be reused in the future web apps projects. That can help create faster,
+better quality projects on solid skeleton. This project also include
+“template — README.md” file from code institute that can be used as a
+guideline to create your own project with proper README.md</p>
+<h2 id="features">Features</h2>
+<p>In the source folder you will find source files and mainly here developing will happen. In the build folder while you develop will be generated ready to use site.
+After finishing your project you can take this folder and deploy it.</p>
+<p>Files in build folder:</p>
+<p>Css files built from source/*.scss files are automatically:</p>
+<ul>
+<li>concatenated</li>
+<li>autoprefixed</li>
+<li>minified</li>
+<li>sourcemaps</li>
+<li>moved to /build/min-css/styles.css</li>
+</ul>
+<p>Js files built from source/js/*.js are automatically:</p>
+<ul>
+<li>compiled with babel (es7) </li>
+<li>concatenated</li>
+<li>autoprefixed</li>
+<li>minified</li>
+<li>sourcemaps</li>
+<li>moved to one file /build/js/scripts.js</li>
+</ul>
+<p>Img are automatically:</p>
+<ul>
+<li>files in /img are compressed and moved to build/img</li>
+</ul>
+<p>All html files from source/ are moved to build/
+index.html is linked to generated files from:</p>
+<p>/build/min-css/styles.css
+/build/js/scripts.js</p>
+<p>README.md is modified for .html version. 
+You can live preview how it will look like in pure html.</p>
+<p>Project is automatically:</p>
+<ul>
+<li>reloading browser using browser-sync</li>
+<li>thanks to browser-sync you can see the site on your laptop and mobile at the same time when developing the app and making changes. </li>
+</ul>
+<h2 id="files">Files</h2>
+<h4 id="gulpfile-js-all-automation-of-the-project-workflow-is-configured-here-">gulpfile.js - All automation of the project workflow is configured here.</h4>
+<p>This file is for a gulp package. And is the main script where automation is triggering and described how exactly work. Gulp is using plugins that are listed in package.json file as well. The essential list of plugins for gulp used in this project:</p>
+<p>Autoprefixer (for better css support in browsers)
+<a href="https://github.com/sindresorhus/gulp-autoprefixer#readme">https://github.com/sindresorhus/gulp-autoprefixer#readme</a></p>
+<ul>
+<li>Babel - (for better javascript support in browsers)
+<a href="https://github.com/babel/gulp-babel#readme">https://github.com/babel/gulp-babel#readme</a></li>
+<li>Concat (for concat js, css files)
+<a href="https://github.com/gulp-community/gulp-concat#readme">https://github.com/gulp-community/gulp-concat#readme</a></li>
+<li>Image optimization:
+<a href="https://github.com/sindresorhus/gulp-imagemin#readme">https://github.com/sindresorhus/gulp-imagemin#readme</a></li>
+<li>Jasmine (for automated tests)
+<a href="https://github.com/mucsi96/gulp-jasmine-livereload-task">https://github.com/mucsi96/gulp-jasmine-livereload-task</a></li>
+<li>Plubmer (for printing errors while developing, and keeping server running)
+<a href="https://github.com/floatdrop/gulp-plumber">https://github.com/floatdrop/gulp-plumber</a></li>
+<li>Sass (for converting sass in to css)
+<a href="https://github.com/dlmanning/gulp-sass#readme">https://github.com/dlmanning/gulp-sass#readme</a></li>
+<li>Sourcemaps (for ability to work on minified js files)
+<a href="https://github.com/gulp-sourcemaps/gulp-sourcemaps">https://github.com/gulp-sourcemaps/gulp-sourcemaps</a></li>
+<li>Uglify (for compacting size of js files)
+<a href="https://github.com/terinjokes/gulp-uglify/">https://github.com/terinjokes/gulp-uglify/</a></li>
+<li>Watch (for observing if files you working on changed)
+<a href="https://github.com/floatdrop/gulp-watch#readme">https://github.com/floatdrop/gulp-watch#readme</a></li>
+<li>Markdown (for changing README.md in to html to preview changes)</li>
+</ul>
+<p>The task &#39;gulp&#39; is defined in task &#39;default&#39;. The task &#39;photo&#39; in task photo. For easy understanding this file I even left a comment for each task. </p>
+<h5 id="configuration-gulpfile-js">Configuration gulpfile.js</h5>
+<p>If you want to start a server from different port you can set it up on line 39:</p>
+<pre><code>const PORT = 9997;
+`</code></pre><p>If you want change strength of the photo compression you can do it here.
+Picture quality 0 (worst) to 100 (perfect).</p>
+<pre><code>const QUALITY = 40; </code></pre><p>If you want to specify order how .js files will be concatenated you can specify them in array JS_ORDER. In following example script zfirst.js will be added first and then rest of the scripts.</p>
+<pre><code>const JS_ORDER = [&#39;source/js/zfirst.js&#39;, SCRIPTS_PATH];</code></pre><h4 id="-eslintrc-json-in-that-file-the-syntax-of-javascript-is-specified-">.eslintrc.json - In that file the syntax of javascript is specified.</h4>
+<p>Eslint will prompt you if your javascript code is note written with correct syntax. That&#39;s help to maintain clear code. By default, airbnb style is implemented with jasmine and es6 support. Please install eslint extension in your editor of choice to use that.</p>
+<p>Read more about eslint airbnb syntax: 
+<a href="https://github.com/airbnb/javascript">https://github.com/airbnb/javascript</a></p>
+<h4 id="specrunner-html-tests-in-jasmine-">SpecRunner.html - tests in jasmine.</h4>
+<p>When running the task <code>gulp jasmine-live</code> this file will be generated and live reloaded each time you change the *.js files. And all jasmine tests will be shown.</p>
+<h4 id="template-readme-md">template - README.md</h4>
+<p>When starting new project it&#39;s important to write a good documentation. Just grab this file and rename it to README.md and edit it to project you currently developing. This file is brought by code-institute. Please check for new versions here:</p>
+<p><a href="https://github.com/Code-Institute-Solutions/readme-template">https://github.com/Code-Institute-Solutions/readme-template</a></p>
+<p>While writing documentation for github this can be useful link to:</p>
+<p><a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">https://help.github.com/articles/basic-writing-and-formatting-syntax/</a></p>
+<h4 id="package-json-all-development-packages-from-node-package-manager-are-listed-in-this-file-">package.json - All development packages from node package manager are listed in this file.</h4>
+<p>When you will download this project, and make <code>npm install</code> all of them will be installed in your node_modules folder. They are essential for this project to work.</p>
+<h3 id="features-left-to-implement">Features left to implement</h3>
+<p>Key features to implement to this template:</p>
+<ul>
+<li>nunjucks </li>
+<li>css for README.md - to render html version exactly like on github pages</li>
+</ul>
+<h3 id="existing-tasks">Existing Tasks</h3>
+<p>To run tasks type gulp and task name. For example: </p>
+<pre><code>gulp photo</code></pre><p>Current tasks for this project: </p>
+<ul>
+<li>jasmine-live (run the jasmine testing)</li>
+<li>photo (optimize photos in src/img)</li>
+<li>delete-photos (delete photos in build/img)</li>
+<li>delete-build (delete whole build folder)</li>
+<li>copy (copy all *html files from source to build)</li>
+<li>styles (convert sass to css and put it to bulid/css and min file to build/min-css)</li>
+<li>script (convert all js and put it to bulid/js)</li>
+<li>reload (reload the browser)</li>
+<li>server (start watching all files in project and automatically refresh the site and do following tasks)<ul>
+<li>default</li>
+<li>copy</li>
+<li>script</li>
+<li>styles</li>
+<li>photo</li>
+<li>server</li>
+</ul>
+</li>
+</ul>
+<h2 id="technologies-used-">Technologies used:</h2>
+<ul>
+<li>gulp </li>
+</ul>
+<p><a href="https://gulpjs.com/">https://gulpjs.com/</a></p>
+<ul>
+<li>sass</li>
+</ul>
+<p><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">http://sass-lang.com/documentation/file.SASS_REFERENCE.html</a></p>
+<ul>
+<li>babel (in this project es7 )</li>
+</ul>
+<p><a href="https://github.com/babel/gulp-babel">https://github.com/babel/gulp-babel</a>
+<a href="https://babeljs.io/">https://babeljs.io/</a></p>
+<ul>
+<li>eslint </li>
+</ul>
+<p>Implemented with airbnb 
+<a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb">https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb</a></p>
+<h2 id="how-to-start-">How to start ?</h2>
+<p>In this particular project I had installed</p>
+<p>gulp version:
+CLI version 2.0.1
+Local version 4.0.0</p>
+<p>In order to start you need to have an installed node package manager</p>
+<p>In folder, you want to start a project type:</p>
+<pre><code>git clone https://github.com/Migacz85/web-template.git
+npm install
+sudo npm install gulp -g
+sudo npm i -g gulp-cli</code></pre><p>After that run the command: </p>
+<pre><code>gulp</code></pre><p>It will make 2 things — build your project to folder &#39;build&#39; and
+your project will run, and do automatically things for you. </p>
+<p>For testing in jasmine run in second terminal:</p>
+<pre><code>gulp jasmine-live</code></pre><h2 id="known-bugs">Known bugs</h2>
+<ul>
+<li>You need to change manually PORT number every time jasmine stops to re run,</li>
+<li>Eslint is throwing errors on _spec.js - spec file for jasmine even after including &#39;jasmine&#39;: true in .eslintrc.json  </li>
+</ul>
+<h1 id="npm-bugs">Npm bugs</h1>
+<p>npm audit gives message:
+found 13 vulnerabilities (3 low, 8 moderate, 2 critical) in 21824 scanned packages
+  13 vulnerabilities require manual review. See the full report for details.</p>
+<p>Dependencies causing these problems:</p>
+<p>moderate:</p>
+<ul>
+<li>gulp-imagemin</li>
+<li>gulp-imagemin-mozjpeg</li>
+</ul>
+<p>low:</p>
+<ul>
+<li>browser-sync</li>
+</ul>
+<p>critical:</p>
+<ul>
+<li>jasmine-live-reloading</li>
+</ul>
