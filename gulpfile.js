@@ -18,6 +18,7 @@ const minifyCss = require('gulp-minify-css');
 const browserSync = require('browser-sync').create();
 const markdown = require('gulp-markdown');
 
+
 const minify = composer(uglifyjs, console);
 
 // SETTINGS
@@ -140,6 +141,7 @@ gulp.task('reload', () => {
 // Static server
 gulp.task('server', () => {
   browserSync.init({
+    files: ['build/index.html', 'README.html'],
     server: {
       baseDir: './build',
     },
@@ -154,6 +156,7 @@ gulp.task('server', () => {
   gulp.watch('build/*.html').on('change', browserSync.reload);
   gulp.watch('build/js/**/*').on('change', browserSync.reload);
 });
+
 
 // Rebuild whole project and run the server
 gulp.task('default', gulp.series('delete-build', 'copy', 'script', 'styles', 'photo', 'readme', 'server'), () => {

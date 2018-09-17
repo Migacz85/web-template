@@ -144,12 +144,12 @@ Current tasks for this project:
 - script (convert all js and put it to bulid/js)
 - reload (reload the browser)
 - server (start watching all files in project and automatically refresh the site and do following tasks)
- - default
- - copy
- - script
- - styles
- - photo
- - server
+  - default
+  - copy
+  - script
+  - styles
+  - photo
+  - server
 
 ## Technologies used:
 

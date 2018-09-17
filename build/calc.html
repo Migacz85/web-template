@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+    <!-- metadata for browsers -->
+    <meta name="description" content="This is an example of a meta description. This will often show up in search results.">
+    <meta name="keywords" content="Web template, basic web project, web boilerplate, gulp, sass, babel">
+    <meta name="author" content="Marcin Mrugacz">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!-- Project js and css files -->
+    <link rel="stylesheet" href="min-css/styles.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR" rel="stylesheet">
+    <title>Template page</title>
+</head>
+<style>
+    .col {
+    
+    margin:0;
+    padding:0;
+}
+.btn {
+    margin-top:5px;
+}
+</style>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+            <a href="#" class="navbar-brand">Logo</a>
+            <button class="navbar-toggler" data-target="#navigation" data-control="navigation" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#feature" class="nav-link">Main Feature</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="preview" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Options</a>
+                        <div class="dropdown-menu" aria-lableledby="preview">
+                            <a class="dropdown-item" href="#task" class="smooth-goto">Tasks</a>
+                            <a class="dropdown-item" href="#settings" id="setting">Settings</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#try" class="nav-link">Try this</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+
+        <p></p>
+        <div class="container">
+
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-sm-12 col-md-6 col-lg-5 ">
+                    <div class="alert alert-info" style="min-height:100px; min-width:200px;max-width:300px " role="alert">
+                        <samp id="equation">0</samp>
+                    </div>
+
+                    <div class="alert alert-info" style="min-height:100px; min-width:200px;max-width:300px " role="alert">
+
+                        <samp id="value">0</samp>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-3"></div>
+            </div>
+            <div class="row">
+
+
+                <div class="col"></div>
+                <div class="col-sm-12 col-md-6 col-lg4" style="min-width:200px">
+                       
+                        
+                    
+                    
+                    <div>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.two(); Calculator.showValue();">2</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.three(); Calculator.showValue();">3</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.leftCali(); Calculator.showValue();">(</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.one(); Calculator.showValue();">1</button>
+                        <button type="button" class="btn btn-outline-info btn-lg" onclick="button.plus(); Calculator.showValue();">+</button>
+                        <button type="button" class="btn btn-outline-info btn-lg" onclick="button.minus(); Calculator.showValue();">-</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.four(); Calculator.showValue();">4</button>
+                        
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.five(); Calculator.showValue();">5</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.six(); Calculator.showValue();">6</button>
+                        
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.rightCali(); Calculator.showValue();">)</button>
+                        <button type="button" class="btn btn-outline-info btn-lg" onclick="button.divide(); Calculator.showValue();">/</button>
+                        <button type="button" class="btn btn-outline-info btn-lg" onclick="button.multi();  Calculator.showValue();">*</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.seven(); Calculator.showValue();">7</button>
+                        
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.eight(); Calculator.showValue();">8</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.nine(); Calculator.showValue();">9</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="button.zero(); Calculator.showValue();">0</button>
+                        <button type="button" class="btn btn-outline-info btn-lg" onclick="button.c(); Calculator.showValue();">C</button>
+                        <button type="button" class="btn btn-outline-info btn-lg" onclick="button.del(); Calculator.showValue();">Del</button>
+                        <!-- </div> -->
+                   <!-- <div> -->
+                       
+            
+                   </div>
+                    <p></p>
+
+                </div>
+                
+                        
+                        
+                
+
+                <div class="col"> </div>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Web Template 2018</p>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 @import "./reset/reset";
 @import "./functions";
 
-$main-col: rgb(48, 97, 138);
+$main-col: rgb(116, 81, 29);
 
 .web-title {
     color: lighten( set-color($main-col), 15) ;
@@ -60,6 +60,8 @@ body {
  footer {
      background-color: darken($main-col,10);
      padding:30px;
+     position: relative;
+     bottom:0;
  }
  footer p {
      color:lighten(set-color($main-col),30);
@@ -68,7 +70,9 @@ body {
 }
 
 // Bootstrap
-
+.container {
+    min-height:70vh;
+}
 .card-body {
     //  background-color: lighten($color: $main-col, $amount: 20);
 }
