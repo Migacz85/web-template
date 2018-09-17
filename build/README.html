@@ -43,9 +43,9 @@ You can live preview how it will look like in pure html.</p>
 <h2 id="files">Files</h2>
 <h4 id="gulpfile-js-all-automation-of-the-project-workflow-is-configured-here-">gulpfile.js - All automation of the project workflow is configured here.</h4>
 <p>This file is for a gulp package. And is the main script where automation is triggering and described how exactly work. Gulp is using plugins that are listed in package.json file as well. The essential list of plugins for gulp used in this project:</p>
-<p>Autoprefixer (for better css support in browsers)
-<a href="https://github.com/sindresorhus/gulp-autoprefixer#readme">https://github.com/sindresorhus/gulp-autoprefixer#readme</a></p>
 <ul>
+<li>Autoprefixer (for better css support in browsers)
+<a href="https://github.com/sindresorhus/gulp-autoprefixer#readme">https://github.com/sindresorhus/gulp-autoprefixer#readme</a></li>
 <li>Babel - (for better javascript support in browsers)
 <a href="https://github.com/babel/gulp-babel#readme">https://github.com/babel/gulp-babel#readme</a></li>
 <li>Concat (for concat js, css files)
@@ -54,7 +54,7 @@ You can live preview how it will look like in pure html.</p>
 <a href="https://github.com/sindresorhus/gulp-imagemin#readme">https://github.com/sindresorhus/gulp-imagemin#readme</a></li>
 <li>Jasmine (for automated tests)
 <a href="https://github.com/mucsi96/gulp-jasmine-livereload-task">https://github.com/mucsi96/gulp-jasmine-livereload-task</a></li>
-<li>Plubmer (for printing errors while developing, and keeping server running)
+<li>Plumber (for printing errors while developing, and keeping server running)
 <a href="https://github.com/floatdrop/gulp-plumber">https://github.com/floatdrop/gulp-plumber</a></li>
 <li>Sass (for converting sass in to css)
 <a href="https://github.com/dlmanning/gulp-sass#readme">https://github.com/dlmanning/gulp-sass#readme</a></li>
@@ -67,6 +67,11 @@ You can live preview how it will look like in pure html.</p>
 <li>Markdown (for changing README.md in to html to preview changes)</li>
 </ul>
 <p>The task &#39;gulp&#39; is defined in task &#39;default&#39;. The task &#39;photo&#39; in task photo. For easy understanding this file I even left a comment for each task. </p>
+<h4 id="calc-html">calc.html</h4>
+<p>Here you can find implementation of how to write specs using jasmine. 
+Example here is a simple calculator with buttons for numbers and operation. 
+To run jasmine specs after installing the project, run :</p>
+<pre><code>jasmine-live</code></pre><p>Terminal should give you a link to open in browser for live reloading tests.</p>
 <h5 id="configuration-gulpfile-js">Configuration gulpfile.js</h5>
 <p>If you want to start a server from different port you can set it up on line 39:</p>
 <pre><code>const PORT = 9997;

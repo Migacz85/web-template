@@ -49,7 +49,7 @@ Project is automatically:
 #### gulpfile.js - All automation of the project workflow is configured here. 
 This file is for a gulp package. And is the main script where automation is triggering and described how exactly work. Gulp is using plugins that are listed in package.json file as well. The essential list of plugins for gulp used in this project:
 
-Autoprefixer (for better css support in browsers)
+- Autoprefixer (for better css support in browsers)
 https://github.com/sindresorhus/gulp-autoprefixer#readme
 - Babel - (for better javascript support in browsers)
 https://github.com/babel/gulp-babel#readme
@@ -59,7 +59,7 @@ https://github.com/gulp-community/gulp-concat#readme
 https://github.com/sindresorhus/gulp-imagemin#readme
 - Jasmine (for automated tests)
 https://github.com/mucsi96/gulp-jasmine-livereload-task
-- Plubmer (for printing errors while developing, and keeping server running)
+- Plumber (for printing errors while developing, and keeping server running)
 https://github.com/floatdrop/gulp-plumber
 - Sass (for converting sass in to css)
 https://github.com/dlmanning/gulp-sass#readme
@@ -72,6 +72,18 @@ https://github.com/floatdrop/gulp-watch#readme
 - Markdown (for changing README.md in to html to preview changes)
 
 The task 'gulp' is defined in task 'default'. The task 'photo' in task photo. For easy understanding this file I even left a comment for each task. 
+
+#### calc.html
+
+Here you can find implementation of how to write specs using jasmine. 
+Example here is a simple calculator with buttons for numbers and operation. 
+To run jasmine specs after installing the project, run :
+
+```
+jasmine-live
+```
+
+Terminal should give you a link to open in browser for live reloading tests.
 
 ##### Configuration gulpfile.js
 
