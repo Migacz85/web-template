@@ -1,5 +1,5 @@
 [![devDependencies Status](https://david-dm.org/migacz85/web-template/dev-status.svg)](https://david-dm.org/migacz85/web-template?type=dev)
-[![devDependencies Status](https://img.shields.io/badge/gulp-4.0-green.svg](https://david-dm.org/migacz85/web-template?type=dev)
+[![devDependencies Status](https://img.shields.io/badge/gulp-4.0-green.svg)](https://david-dm.org/migacz85/web-template?type=dev)
 ![David](https://img.shields.io/badge/source%20size-59.3Kb-green.svg)
 ![David](https://img.shields.io/badge/build%20size-51.3Kb-green.svg)
 
