@@ -1,3 +1,11 @@
+![David](https://img.shields.io/david/dev/expressjs/express.svg)
+![David](https://img.shields.io/badge/gulp-4.0-green.svg)
+![David](https://img.shields.io/badge/repo%20size-10%20MB-blue.svg)
+![David](https://img.shields.io/badge/build%20size-51%3kb-blue.svg)
+![David](https://img.shields.io/badge/source%20size-59%3kb-blue.svg)
+![APMLicense](https://img.shields.io/apm/l/:package.svg)
+
+
 # Web template project
 
 The main idea here is to create a simple but powerful template that can
