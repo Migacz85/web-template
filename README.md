@@ -65,7 +65,7 @@ https://github.com/gulp-community/gulp-concat#readme
 https://github.com/sindresorhus/gulp-imagemin#readme
 - Jasmine (for automated tests)
 https://github.com/mucsi96/gulp-jasmine-livereload-task
-- Plubmer (for printing errors while developing, and keeping server running)
+- Plumber (for printing errors while developing, and keeping server running)
 https://github.com/floatdrop/gulp-plumber
 - Sass (for converting sass in to css)
 https://github.com/dlmanning/gulp-sass#readme
@@ -146,8 +146,8 @@ Current tasks for this project:
 - delete-photos (delete photos in build/img)
 - delete-build (delete whole build folder)
 - copy (copy all *html files from source to build)
-- styles (convert sass to css and put it to bulid/css and min file to build/min-css)
-- script (convert all js and put it to bulid/js)
+- styles (convert sass to css and put it to build/css and min file to build/min-css)
+- script (convert all js and put it to build/js)
 - reload (reload the browser)
 - server (start watching all files in project and automatically refresh the site and do following tasks)
   - default
