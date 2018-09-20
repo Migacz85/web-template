@@ -1,3 +1,9 @@
+[![devDependencies Status](https://david-dm.org/migacz85/web-template/dev-status.svg)](https://david-dm.org/migacz85/web-template?type=dev)
+[![devDependencies Status](https://img.shields.io/badge/gulp-4.0-green.svg)](https://david-dm.org/migacz85/web-template?type=dev)
+![David](https://img.shields.io/badge/source%20size-59.3Kb-green.svg)
+![David](https://img.shields.io/badge/build%20size-51.3Kb-green.svg)
+
+
 # Web template project
 
 The main idea here is to create a simple but powerful template that can
@@ -152,8 +158,8 @@ Current tasks for this project:
 - delete-photos (delete photos in build/img)
 - delete-build (delete whole build folder)
 - copy (copy all *html files from source to build)
-- styles (convert sass to css and put it to bulid/css and min file to build/min-css)
-- script (convert all js and put it to bulid/js)
+- styles (convert sass to css and put it to build/css and min file to build/min-css)
+- script (convert all js and put it to build/js)
 - reload (reload the browser)
 - server (start watching all files in project and automatically refresh the site and do following tasks)
   - default
