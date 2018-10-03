@@ -1,9 +1,22 @@
-<h1 id="web-template-project">Web template project</h1>
-<p>The main idea here is to create a simple but powerful template that can
-be reused in the future web apps projects. That can help create faster,
-better quality projects on solid skeleton. This project also include
-“template — README.md” file from code institute that can be used as a
-guideline to create your own project with proper README.md</p>
+<p><a href="https://david-dm.org/migacz85/web-template?type=dev"><img src="https://david-dm.org/migacz85/web-template/dev-status.svg" alt="devDependencies Status"></a></p>
+<h1 id="boilerplate-web-app">Boilerplate web app</h1>
+<p>The main idea here is to automate boring tasks while developing a website (like optimization of photos, autorefreshing the website, compiling sass in to css, concatenating all js files in to one, autorefreshing jasmine testing results) and having a boilerplate code that can be reused in future projects with implemented out of the box bootstrap and jasmine testing.
+This project also include “template — README.md” file from code institute that can be used as a guideline to create your own project with proper README.md</p>
+<h2 id="how-to-start-">How to start ?</h2>
+<p>In this particular project I had installed</p>
+<p>gulp version:
+CLI version 2.0.1
+Local version 4.0.0</p>
+<p>In order to start you need to have an installed node package manager</p>
+<p>In folder, you want to start a project type:</p>
+<pre><code>git clone https://github.com/Migacz85/web-template.git
+npm install
+sudo npm install gulp -g
+sudo npm i -g gulp-cli</code></pre><p>After that run the command: </p>
+<pre><code>gulp</code></pre><p>It will make 2 things — build your project to folder &#39;build&#39; and
+your project will run, and do automatically things for you. </p>
+<p>For testing in jasmine, just add to the browser link of current running website:</p>
+<pre><code>js/tests/</code></pre><p>And you will see results of automated testing.</p>
 <h2 id="features">Features</h2>
 <p>In the source folder you will find source files and mainly here developing will happen. In the build folder while you develop will be generated ready to use site.
 After finishing your project you can take this folder and deploy it.</p>
@@ -40,7 +53,7 @@ You can live preview how it will look like in pure html.</p>
 <li>reloading browser using browser-sync</li>
 <li>thanks to browser-sync you can see the site on your laptop and mobile at the same time when developing the app and making changes. </li>
 </ul>
-<h2 id="files">Files</h2>
+<h2 id="files-description">Files description</h2>
 <h4 id="gulpfile-js-all-automation-of-the-project-workflow-is-configured-here-">gulpfile.js - All automation of the project workflow is configured here.</h4>
 <p>This file is for a gulp package. And is the main script where automation is triggering and described how exactly work. Gulp is using plugins that are listed in package.json file as well. The essential list of plugins for gulp used in this project:</p>
 <ul>
@@ -52,8 +65,6 @@ You can live preview how it will look like in pure html.</p>
 <a href="https://github.com/gulp-community/gulp-concat#readme">https://github.com/gulp-community/gulp-concat#readme</a></li>
 <li>Image optimization:
 <a href="https://github.com/sindresorhus/gulp-imagemin#readme">https://github.com/sindresorhus/gulp-imagemin#readme</a></li>
-<li>Jasmine (for automated tests)
-<a href="https://github.com/mucsi96/gulp-jasmine-livereload-task">https://github.com/mucsi96/gulp-jasmine-livereload-task</a></li>
 <li>Plumber (for printing errors while developing, and keeping server running)
 <a href="https://github.com/floatdrop/gulp-plumber">https://github.com/floatdrop/gulp-plumber</a></li>
 <li>Sass (for converting sass in to css)
@@ -70,20 +81,15 @@ You can live preview how it will look like in pure html.</p>
 <h4 id="calc-html">calc.html</h4>
 <p>Here you can find implementation of how to write specs using jasmine. 
 Example here is a simple calculator with buttons for numbers and operation. 
-To run jasmine specs after installing the project, run :</p>
-<pre><code>jasmine-live</code></pre><p>Terminal should give you a link to open in browser for live reloading tests.</p>
-<h5 id="configuration-gulpfile-js">Configuration gulpfile.js</h5>
-<p>If you want to start a server from different port you can set it up on line 39:</p>
-<pre><code>const PORT = 9997;
-`</code></pre><p>If you want change strength of the photo compression you can do it here.
+To run jasmine specs just add to your browser (in your running site):</p>
+<pre><code>/js/tests/</code></pre><h5 id="configuration-gulpfile-js">Configuration gulpfile.js</h5>
+<p>If you want change strength of the photo compression you can do it here.
 Picture quality 0 (worst) to 100 (perfect).</p>
 <pre><code>const QUALITY = 40; </code></pre><p>If you want to specify order how .js files will be concatenated you can specify them in array JS_ORDER. In following example script zfirst.js will be added first and then rest of the scripts.</p>
 <pre><code>const JS_ORDER = [&#39;source/js/zfirst.js&#39;, SCRIPTS_PATH];</code></pre><h4 id="-eslintrc-json-in-that-file-the-syntax-of-javascript-is-specified-">.eslintrc.json - In that file the syntax of javascript is specified.</h4>
 <p>Eslint will prompt you if your javascript code is note written with correct syntax. That&#39;s help to maintain clear code. By default, airbnb style is implemented with jasmine and es6 support. Please install eslint extension in your editor of choice to use that.</p>
 <p>Read more about eslint airbnb syntax: 
 <a href="https://github.com/airbnb/javascript">https://github.com/airbnb/javascript</a></p>
-<h4 id="specrunner-html-tests-in-jasmine-">SpecRunner.html - tests in jasmine.</h4>
-<p>When running the task <code>gulp jasmine-live</code> this file will be generated and live reloaded each time you change the *.js files. And all jasmine tests will be shown.</p>
 <h4 id="template-readme-md">template - README.md</h4>
 <p>When starting new project it&#39;s important to write a good documentation. Just grab this file and rename it to README.md and edit it to project you currently developing. This file is brought by code-institute. Please check for new versions here:</p>
 <p><a href="https://github.com/Code-Institute-Solutions/readme-template">https://github.com/Code-Institute-Solutions/readme-template</a></p>
@@ -101,7 +107,6 @@ Picture quality 0 (worst) to 100 (perfect).</p>
 <p>To run tasks type gulp and task name. For example: </p>
 <pre><code>gulp photo</code></pre><p>Current tasks for this project: </p>
 <ul>
-<li>jasmine-live (run the jasmine testing)</li>
 <li>photo (optimize photos in src/img)</li>
 <li>delete-photos (delete photos in build/img)</li>
 <li>delete-build (delete whole build folder)</li>
@@ -138,40 +143,13 @@ Picture quality 0 (worst) to 100 (perfect).</p>
 </ul>
 <p>Implemented with airbnb 
 <a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb">https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb</a></p>
-<h2 id="how-to-start-">How to start ?</h2>
-<p>In this particular project I had installed</p>
-<p>gulp version:
-CLI version 2.0.1
-Local version 4.0.0</p>
-<p>In order to start you need to have an installed node package manager</p>
-<p>In folder, you want to start a project type:</p>
-<pre><code>git clone https://github.com/Migacz85/web-template.git
-npm install
-sudo npm install gulp -g
-sudo npm i -g gulp-cli</code></pre><p>After that run the command: </p>
-<pre><code>gulp</code></pre><p>It will make 2 things — build your project to folder &#39;build&#39; and
-your project will run, and do automatically things for you. </p>
-<p>For testing in jasmine run in second terminal:</p>
-<pre><code>gulp jasmine-live</code></pre><h2 id="known-bugs">Known bugs</h2>
 <ul>
-<li>You need to change manually PORT number every time jasmine stops to re run,</li>
-<li>Eslint is throwing errors on _spec.js - spec file for jasmine even after including &#39;jasmine&#39;: true in .eslintrc.json  </li>
+<li>jasmine </li>
 </ul>
-<h1 id="npm-bugs">Npm bugs</h1>
-<p>npm audit gives message:
-found 13 vulnerabilities (3 low, 8 moderate, 2 critical) in 21824 scanned packages
-  13 vulnerabilities require manual review. See the full report for details.</p>
-<p>Dependencies causing these problems:</p>
-<p>moderate:</p>
-<ul>
-<li>gulp-imagemin</li>
-<li>gulp-imagemin-mozjpeg</li>
-</ul>
-<p>low:</p>
-<ul>
-<li>browser-sync</li>
-</ul>
-<p>critical:</p>
-<ul>
-<li>jasmine-live-reloading</li>
-</ul>
+<p><a href="https://jasmine.github.io/">https://jasmine.github.io/</a></p>
+<h1 id="npm-audit">Npm audit</h1>
+<p>You should not be worry about this mostly because you are running them as a developer. 
+But you can find by running npm audit:</p>
+<p>found 9 vulnerabilities (1 low, 8 moderate) in 19440 scanned packages
+  9 vulnerabilities require manual review. See the full report for details.</p>
+<p>1 low is by browsersync and the 8 moderate is caused by dependencies for manipulating images. </p>

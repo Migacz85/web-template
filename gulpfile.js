@@ -11,13 +11,9 @@ const imagemin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const clean = require('gulp-clean');
 const sourcemaps = require('gulp-sourcemaps');
-const jasmineBrowser = require('gulp-jasmine-browser');
-const watch = require('gulp-watch');
-const jasmine = require('gulp-jasmine-livereload-task');
 const minifyCss = require('gulp-minify-css');
 const browserSync = require('browser-sync').create();
 const markdown = require('gulp-markdown');
-
 
 const minify = composer(uglifyjs, console);
 
@@ -35,41 +31,14 @@ const SCRIPTS_PATH = 'source/js/**/*.js';
 const SCSS_PATH = 'source/scss/**/*.scss';
 const IMG_PATH = 'source/img/**/*';
 
-// For testing in jasmine
-const PORT = 9997;
-const SPEC_PATH = 'source/spec/_spec.js';
-const JASMINE_PATH = [SCRIPTS_PATH, SPEC_PATH, CSS_PATH];
-
 // Order how js will be concatenated
 const JS_ORDER = ['source/js/zfirst.js', SCRIPTS_PATH];
 
 // Picture quality 0 (worst) to 100 (perfect).
 const QUALITY = 40;
 
-// Testing with jasmine
-gulp.task('jasmine-live', jasmine({
-  files: JASMINE_PATH,
-  specRunner: ['./source/spec'],
-  staticAssetsPath: ['./source/spec'],
-  livereload: PORT,
-}));
-
 // For changing readme.md in to html format
 gulp.task('readme', () => gulp.src('README.md').pipe(markdown()).pipe(gulp.dest('build/')));
-
-// Works without auto-reloading the page
-// Official tip from jasmine:
-// https://github.com/jasmine/gulp-jasmine-browser
-
-gulp.task('jasmine', () => {
-  const filesForTest = JASMINE_PATH;
-  return gulp.src(filesForTest)
-    .pipe(watch(filesForTest))
-    .pipe(jasmineBrowser.specRunner())
-    .pipe(jasmineBrowser.server({
-      port: PORT,
-    }));
-});
 
 // Photos
 gulp.task('photo', () => gulp.src([IMG_PATH])
@@ -138,6 +107,16 @@ gulp.task('reload', () => {
   browserSync.reload();
 });
 
+gulp.task('delete-jasmine-files', () => gulp.src(['build/js/spec/index.html'], {
+  read: false, allowEmpty: true,
+})
+  .pipe(clean()));
+
+gulp.task('copy-jasmine-files', () => gulp
+.src('source/tests/**/*')
+.pipe(gulp.dest('build/js/tests')));
+
+
 // Static server
 gulp.task('server', () => {
   browserSync.init({
@@ -146,6 +125,11 @@ gulp.task('server', () => {
       baseDir: './build',
     },
   });
+
+  // Copy/Refresh only .index html in tests
+  gulp.watch('source/tests/**/*.html', gulp.series('script', 'delete-jasmine-files' ,'copy-jasmine-files'));
+  gulp.watch('source/tests/**/*.js', gulp.series('script', 'delete-jasmine-files' ,'copy-jasmine-files'));
+  gulp.watch('source/js/**/*.js', gulp.series('script','delete-jasmine-files',  'copy-jasmine-files'));
   gulp.watch('source/js/**/*js', gulp.series('script'));
   gulp.watch(SCSS_PATH, gulp.series('styles'));
   gulp.watch('source/img/**/*', gulp.series('delete-photos'));
@@ -159,5 +143,5 @@ gulp.task('server', () => {
 
 
 // Rebuild whole project and run the server
-gulp.task('default', gulp.series('delete-build', 'copy', 'script', 'styles', 'photo', 'readme', 'server'), () => {
+gulp.task('default', gulp.series('delete-build', 'copy', 'copy-jasmine-files', 'script', 'styles', 'photo', 'readme', 'server'), () => {
 });

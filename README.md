@@ -1,10 +1,42 @@
-# Web template project
+[![devDependencies Status](https://david-dm.org/migacz85/web-template/dev-status.svg)](https://david-dm.org/migacz85/web-template?type=dev)
+# Boilerplate web app
 
-The main idea here is to create a simple but powerful template that can
-be reused in the future web apps projects. That can help create faster,
-better quality projects on solid skeleton. This project also include
-“template — README.md” file from code institute that can be used as a
-guideline to create your own project with proper README.md
+The main idea here is to automate boring tasks while developing a website (like optimization of photos, autorefreshing the website, compiling sass in to css, concatenating all js files in to one, autorefreshing jasmine testing results) and having a boilerplate code that can be reused in future projects with implemented out of the box bootstrap and jasmine testing.
+This project also include “template — README.md” file from code institute that can be used as a guideline to create your own project with proper README.md
+
+##  How to start ?
+
+In this particular project I had installed
+
+gulp version:
+CLI version 2.0.1
+Local version 4.0.0
+
+In order to start you need to have an installed node package manager
+
+In folder, you want to start a project type:
+```
+git clone https://github.com/Migacz85/web-template.git
+npm install
+sudo npm install gulp -g
+sudo npm i -g gulp-cli
+```
+
+After that run the command: 
+
+```
+gulp
+```
+It will make 2 things — build your project to folder 'build' and
+your project will run, and do automatically things for you. 
+
+For testing in jasmine, just add to the browser link of current running website:
+
+```
+js/tests/
+```
+
+And you will see results of automated testing.
 
 ## Features
 
@@ -44,9 +76,10 @@ Project is automatically:
  - reloading browser using browser-sync
  - thanks to browser-sync you can see the site on your laptop and mobile at the same time when developing the app and making changes. 
 
-## Files
+## Files description
 
 #### gulpfile.js - All automation of the project workflow is configured here. 
+
 This file is for a gulp package. And is the main script where automation is triggering and described how exactly work. Gulp is using plugins that are listed in package.json file as well. The essential list of plugins for gulp used in this project:
 
 - Autoprefixer (for better css support in browsers)
@@ -57,8 +90,6 @@ https://github.com/babel/gulp-babel#readme
 https://github.com/gulp-community/gulp-concat#readme
 - Image optimization:
 https://github.com/sindresorhus/gulp-imagemin#readme
-- Jasmine (for automated tests)
-https://github.com/mucsi96/gulp-jasmine-livereload-task
 - Plumber (for printing errors while developing, and keeping server running)
 https://github.com/floatdrop/gulp-plumber
 - Sass (for converting sass in to css)
@@ -77,21 +108,13 @@ The task 'gulp' is defined in task 'default'. The task 'photo' in task photo. Fo
 
 Here you can find implementation of how to write specs using jasmine. 
 Example here is a simple calculator with buttons for numbers and operation. 
-To run jasmine specs after installing the project, run :
+To run jasmine specs just add to your browser (in your running site):
 
 ```
-jasmine-live
+/js/tests/
 ```
-
-Terminal should give you a link to open in browser for live reloading tests.
 
 ##### Configuration gulpfile.js
-
-If you want to start a server from different port you can set it up on line 39:
-
-```
-const PORT = 9997;
-````
 
 If you want change strength of the photo compression you can do it here.
 Picture quality 0 (worst) to 100 (perfect).
@@ -113,9 +136,6 @@ Eslint will prompt you if your javascript code is note written with correct synt
 Read more about eslint airbnb syntax: 
 https://github.com/airbnb/javascript
 
-#### SpecRunner.html - tests in jasmine.
-
-When running the task ```gulp jasmine-live``` this file will be generated and live reloaded each time you change the *.js files. And all jasmine tests will be shown.
 
 #### template - README.md  
 
@@ -147,7 +167,6 @@ gulp photo
 ```
 Current tasks for this project: 
 
-- jasmine-live (run the jasmine testing)
 - photo (optimize photos in src/img)
 - delete-photos (delete photos in build/img)
 - delete-build (delete whole build folder)
@@ -183,60 +202,17 @@ https://babeljs.io/
 Implemented with airbnb 
 https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
 
-##  How to start ?
+- jasmine 
 
-In this particular project I had installed
+https://jasmine.github.io/
 
-gulp version:
-CLI version 2.0.1
-Local version 4.0.0
 
-In order to start you need to have an installed node package manager
+# Npm audit
 
-In folder, you want to start a project type:
-```
-git clone https://github.com/Migacz85/web-template.git
-npm install
-sudo npm install gulp -g
-sudo npm i -g gulp-cli
-```
+You should not be worry about this mostly because you are running them as a developer. 
+But you can find by running npm audit:
 
-After that run the command: 
+found 9 vulnerabilities (1 low, 8 moderate) in 19440 scanned packages
+  9 vulnerabilities require manual review. See the full report for details.
 
-```
-gulp
-```
-It will make 2 things — build your project to folder 'build' and
-your project will run, and do automatically things for you. 
-
-For testing in jasmine run in second terminal:
-
-```
-gulp jasmine-live
-```
-
-## Known bugs
-
-- You need to change manually PORT number every time jasmine stops to re run,
-- Eslint is throwing errors on _spec.js - spec file for jasmine even after including 'jasmine': true in .eslintrc.json  
-
-# Npm bugs
-
-npm audit gives message:
-found 13 vulnerabilities (3 low, 8 moderate, 2 critical) in 21824 scanned packages
-  13 vulnerabilities require manual review. See the full report for details.
-
-Dependencies causing these problems:
-
-moderate:
-
-- gulp-imagemin
-- gulp-imagemin-mozjpeg
-
-low:
-
-- browser-sync
-
-critical:
-
-- jasmine-live-reloading
+1 low is by browsersync and the 8 moderate is caused by dependencies for manipulating images. 
